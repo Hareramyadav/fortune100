@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% for identity in site_identity %}
+    <title>{{identity.site_name}}</title>
+    <link rel="icon" href="/{{identity.favicon}}">
+    {% endfor %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{% static 'js/jQuery3.6.0.js' %}"></script>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link rel="stylesheet" href="../static/css/tailwind.css">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!--Swiper-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!--LINEICONS -->
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet" />
+
+    <!-- New css files -->
+    <link rel="stylesheet" href="../static/css/zstyle.css">
+
+</head>
+
+<body>
+    <div class="header">
+        <!-- ======= Top Bar ======= -->
+        <section id="topbar" class="d-flex align-items-center">
+            <div class="container d-flex justify-content-center justify-content-md-between">
+                {% for footer in footer %}
+                <div class="contact-info d-flex align-items-center">
+                    <a href="mailto:{{footer.email}}" class="text-white me-2"><i class="fa-solid fa-envelope"></i> {{footer.email}}</a>
+                    <a href="" class="text-white"><i class="fa-solid fa-phone"></i> {{footer.phone_number}}</a>
+                </div>
+                <div class="social-links d-none d-md-flex align-items-center">
+                    {% if footer.facebook %}
+                    <a href="{{footer.facebook}}" class="facebook" target="_blank"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    {% endif %}
+                    {% if footer.twitter %}
+                    <a href="{{footer.twitter}}" class="twitter" target="_blank"><i
+                            class="fa-brands fa-twitter"></i></a>
+                    {% endif %}
+                    {% if footer.instagram %}
+                    <a href="{{footer.instagram}}" class="instagram" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    {% endif %}
+                    {% if footer.youtube %}
+                    <a href="{{footer.youtube}}" class="youtube" target="_blank"><i
+                            class="fa-brands fa-youtube"></i></a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+ 
+        <nav class="navbar navbar-expand-lg navbar-light sticky">
+            <div class="container-fluid">
+                {% for identity in site_identity %}
+                <a class="navbar-brand" href="/"><img src="/{{identity.logo_first}}" alt=""></a>
+                {% endfor %}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#header"
+                    aria-controls="header" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bottom-header" id="header">
+                    <a class="nav-link text-capitalize bottom-nav-link text-dark" href="/">Home</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    {% block content %} {% endblock %}
+    <div class="footer mt-5 py-3">
+        <div class="container-fluid">
+            <div class="footer-first mb-4">
+                <div class="footer-heading mb-3">
+                    <h3 class="text-light text-capitalize fs-3">Raki International Pvt. Ltd.</h3>
+                </div>
+                {% for footer in footer %}
+                <div class="contact-detail d-flex flex-column">
+                    <h6 class="icon text-light"><i class="fas fa-map-marker me-3"></i> {{footer.address}}</h6>
+                    <span class="icon text-light"><i class="fas fa-phone me-3"></i><a
+                            class="text-decoration-none text-light"
+                            href="tel:+977-01-4112043">{{footer.phone_number}}</a></span>
+                    <span class="icon text-light"><i class="fas fa-envelope me-3"></i><a
+                            class="text-decoration-none text-light"
+                            href="emailto:{{footer.email}}">{{footer.email}}</a></span>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="footer-second mb-4">
+                <div class="footer-heading mb-3">
+                    <h3 class="text-light text-capitalize fs-3">Useful Links</h3>
+                </div>
+                <div class="link-details">
+                    <ul class="ps-0">
+                        <li class="list-unstyled"><a href="#" class="text-decoration-none text-light">Home</a></li>
+                        <li class="list-unstyled"><a href="#" class="text-decoration-none text-light">About Us</a></li>
+                        <li class="list-unstyled"><a href="#" class="text-decoration-none text-light">Contact Us</a>
+                        </li>
+                        <li class="list-unstyled"><a href="#" class="text-decoration-none text-light">Gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-third mb-4">
+                <div class="footer-heading mb-3">
+                    <h3 class="text-light text-capitalize fs-3">Connect with us</h3>
+                </div>
+                <div class="social-details">
+                    {% for footer in footer %}
+                    {% if footer.facebook %}
+                    <a href="{{footer.facebook}}" target="_blank" class="text-light"><i
+                            class="fa-brands fa-facebook icon me-3 fs-3"></i></a>
+                    {% endif %}
+                    {% if footer.instagram %}
+                    <a href="{{footer.instagram}}" target="_blank" class="text-light"><i
+                            class="fa-brands fa-instagram icon me-3 fs-3"></i></a>
+                    {% endif %}
+                    {% if footer.youtube %}
+                    <a href="{{footer.youtube}}" target="_blank" class="text-light"><i
+                            class="fa-brands fa-youtube icon me-3 fs-3"></i></a>
+                    {% endif %}
+                    {% if footer.twitter %}
+                    <a href="{{footer.twitter}}" target="_blank" class="text-light"><i
+                            class="fa-brands fa-twitter icon me-3 fs-3"></i></a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        {% for footer in footer %}
+        <div class="container align-items-center text-center text-white py-2">
+            {{footer.copyright | safe}}
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/other.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+        integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="../static/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="../static/js/plugins.js"></script>
+    <script src="../static/js/main.js"></script>
+</body>
+
+</html>

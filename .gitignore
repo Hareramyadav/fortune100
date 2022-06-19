@@ -2,6 +2,13 @@
 __pycache__/
 *.py[cod]
 *$py.class
+fortune/__pycache__
+fortuneapp/__pycache__
+fortuneapp/migrations/__pycache__
+db.sqlite3
+media
+passenger_wsgi.py
+
 
 # C extensions
 *.so

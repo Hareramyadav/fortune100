@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="px-4 py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-16">
+        <div class="services relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {% for service in services %}
+            <div class="">
+                <div class="">
+                    <div
+                        class="flex flex-col justify-between overflow-hidden transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl">
+                        <div class="p-5 cursor-pointer">
+                            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-blue-50">
+                                {% if service.image %}
+                                <img class="w-12 h-12 rounded" src="{{service.image.url}}" />
+                                {% else %}
+                                <img class="w-12 h-12 rounded" src="{% static 'images/place.jpeg' %}" />
+                                {% endif %}
+                            </div>
+                            <p class="mb-2 font-bold">{{service.title}}</p>
+                            <p class="text-sm leading-5 text-gray-900">
+                                <a href="{% url 'services' service_id=service.id %}">
+                                    {{service.short_desc | safe}}
+                                </a>
+                            </p>
+                        </div>
+                        <div
+                            class="w-full h-1 ml-auto duration-300 origin-left transform scale-x-0 bg-red-500 group-hover:scale-x-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
