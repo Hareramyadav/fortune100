@@ -23,5 +23,5 @@ urlpatterns = [
     path('', include('fortuneapp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-handler404 = 'nasaapp.views.page_not_found_view'
-handler500 = 'nasaapp.views.server_error'
+handler404 = 'fortuneapp.views.page_not_found_view'
+handler500 = 'fortuneapp.views.server_error'
