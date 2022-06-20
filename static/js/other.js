@@ -101,7 +101,7 @@ $(document).ready(function () {
                 } else {
                     if (a.menu_link === '' || a.menu_link === null) {
                         $('.bottom-header').append(
-                            `<a class="nav-link text-capitalize bottom-nav-link text-dark" href="${url}raki/${a.id}">`
+                            `<a class="nav-link text-capitalize bottom-nav-link text-dark" href="${url}fortune/${a.id}">`
                             + a.menu_name +
                             '</a>'
                         )
