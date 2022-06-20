@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'aqi1=!brrl(gtdn)#x=m574d*ai0alkk2+cy^qr(2=6!teumn='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://fortune.radiatnserversite.com/','www.fortune.radiatnserversite.com', 'fortune.radiatnserversite.com','http://127.0.0.1/','127.0.0.1']
 
 
 # Application definition
@@ -81,12 +81,22 @@ WSGI_APPLICATION = 'fortune.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fortune',
-        'USER':'root',
-        'PASSWORD':'',
+        'NAME': 'radijmdg_fortunedb',
+        'USER':'radijmdg_fortuneuser',
+        'PASSWORD':'6a^yiVCoy4+h',
         'HOST':'localhost',
         'PORT':'3306',
     }
+
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'fortune',
+    #     'USER':'root',
+    #     'PASSWORD':'',
+    #     'HOST':'localhost',
+    #     'PORT':'3306',
+    # }
 }
 
 
@@ -131,8 +141,8 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-# STATIC_ROOT = '/home/nasacollege/public_html/static'
-# MEDIA_ROOT = '/home/nasacollege/public_html/media'
+STATIC_ROOT = '/home/nasacollege/public_html/static'
+MEDIA_ROOT = '/home/nasacollege/public_html/media'
 
 
 USERNAME = 'fortune'
